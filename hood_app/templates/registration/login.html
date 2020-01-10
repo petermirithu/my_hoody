@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">      
+    </div>
+    <div class="col-md-6">
+      {% if form.errors %}
+      <p class="alert alert-danger">Incorrect credentials. Try again</p>
+      {% endif %}
+
+      <div class="card bg-transparent">
+        <div class="card-header"><h2><b><u>Sign In</u></b></h2></div>
+        <div class="card-body">
+          <form action="/accounts/login/" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form%}
+            <div class="form-group">
+              <input type='submit' class="btn btn-outline-info" value='Sign In'>
+            </div>
+          <form>
+        </div>
+        <h5>If you don't have an account...</h5>
+        <a class='btn btn-outline-primary' href="/accounts/register/">Sign Up</a>      
+      </div>
+    </div>
+    <div class="col-md-3">      
+    </div>
+  </div>
+</div>
+{% endblock content %}
