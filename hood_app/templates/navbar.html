@@ -1,0 +1,36 @@
+<nav id="nav" class="navbar sticky-top navbar-expand-lg navbar-light bg-dark" style="background-color: black">
+  <button style="background-color:white" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <a style="color:lightblue" class="navbar-brand" href="{% url 'home' %}">My_Hoody</a>
+
+  
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">  
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a style="color:azure" class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+      </li>      
+      {% if user.is_authenticated %}
+        {% if user.profile.profile_pic %}
+        <img class="rounded-circle"src="{{user.profile.profile_pic.cdn_url}}" width="40px" height="40px"alt="Profile photo">                              
+        {% else %}
+        <img class="rounded-circle"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLLiVPh45RkmE-FnMz_mZBOwcrK2BemrMoJ5I5SRSa5zHuMy3L&s" width="40px" height="40px" alt="Profile photo">
+        {% endif %}
+      <li class="nav-item">
+        <a style="color:azure" class="nav-link" href="/accounts/profile/">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a style="color:azure" class="nav-link" href="/logout/"><i class="fas fa-sign-in-alt"></i> Sign Out</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a style="color:azure" class="nav-link" href="/accounts/login/"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+      </li>
+      {% endif %}
+    </ul>    
+  </div>
+  <script src="https://kit.fontawesome.com/8311960bd4.js" crossorigin="anonymous"></script>        
+</nav>
+<br>
