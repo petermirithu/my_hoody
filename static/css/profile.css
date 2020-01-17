@@ -1,0 +1,18 @@
+#card_profile{  
+  color: rgb(94, 149, 194);     
+  border: solid black;
+  border-radius: 10px 10px 10px 10px;
+  background-image: url('https://us.123rf.com/450wm/phochi1981/phochi19811801/phochi1981180100065/92779643-black-square-pattern-luxury-sofa-background-and-texture-vector-illustration.jpg?ver=6');
+}
+#profile_pic{  
+  -webkit-clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+}
+.names{
+  position: absolute;
+  top: 80%;
+  background-color: black;
+  color: aqua;
+  opacity: 0.6;
+  left: 20px;  
+}
