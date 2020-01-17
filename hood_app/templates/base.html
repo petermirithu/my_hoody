@@ -13,13 +13,16 @@
 
   {% block styles %}
     {% bootstrap_css %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">             
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
   {% endblock styles %}
   </head>
   <body>
   {% include 'navbar.html' %}
-
+  {% comment %} <div id="wrapper-load">
+    <span><img src="https://i.pinimg.com/originals/bf/34/61/bf34611d89cb4e9e62fc4997a1d329f2.gif" id="loader"></span>
+  </div>   {% endcomment %}
+  
   {% block content %}
 
   {% endblock content %}
@@ -36,8 +39,14 @@
   </body>
   
   {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
-    <script src="https://kit.fontawesome.com/8311960bd4.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/8311960bd4.js" crossorigin="anonymous"></script>    
     {% bootstrap_javascript %}
+    <script>
+      $(window).load(function() {        
+        $("#loader").hide();
+      });
+  </script>
   {% endblock scripts %}
 </html>
