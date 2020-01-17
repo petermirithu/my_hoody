@@ -2,8 +2,62 @@
 {% load static %}
 {% load bootstrap4 %}
 
+{% block styles %}
+  {{block.super}}
+  <link href="{% static 'css/profile.css' %}" rel="stylesheet">
+{% endblock styles %}
+
 {% block content %}
 <div class="container-fluid">
   <h2>{{user.username}}'s profile</h2>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">  
+      <div class="card" id="card_profile">
+        <div class='row'>
+          <div class="col-md-6">
+            <div id="profile_pic">
+              {% if user.profile.profile_pic %}
+                <img src="{{user.profile.profile_pic}}" width="300px" height="300px" alt="{{user.username}}">
+                <h2 class="names">{{user.username}}</h2>
+              {% else %}
+                <img src="https://images.unsplash.com/photo-1532703108233-69111d554cb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" width="300px" height="300px" alt="Profile photo">
+                <h2 class="names">{{user.username}}</h2>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-md-6">
+            {% if user.profile.bio %}
+            <h5>Bio: {{user.profile.bio}}</h5>
+            {% else %}
+            <h5>Bio: ....</h5>
+            {% endif %}
+            <hr>
+            {% if user.profile.contact %}
+            <h5>Contact: {{user.profile.contact}}</h5>
+            {% else %}
+            <h5>Contact: ....</h5>
+            {% endif %}
+            <hr>
+            {% if user.profile.county %}
+            <h5>County: {{user.profile.county}}</h5>
+            {% else %}
+            <h5>County: ....</h5>
+            {% endif %}
+            <hr>
+            {% if user.profile.hood %}
+            <h5>Hood: {{user.profile.hood}}</h5>
+            {% else %}
+            <h5>Hood: ....</h5>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <a href="{% url 'updateprofile' %}" class="btn btn-outline-info">Update profile</a>
+    </div>
+  </div>
+  
 </div>
 {% endblock content %}
