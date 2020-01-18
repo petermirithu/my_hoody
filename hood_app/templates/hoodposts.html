@@ -5,8 +5,7 @@
 {% block content %}
 <div class="container">  
   <h1 class="text-center">{{title|title}}</h1>
-  {% if posts %}
-    <h6><u>The following posts are in your neighbour hood only:</u></h6>
+  {% if posts %}    
     <div class="row">
       {% for post in posts %}
       <div class="card">

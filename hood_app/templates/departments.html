@@ -5,8 +5,7 @@
 {% block content %}
 <div class="container">  
   <h1 class="text-center">{{title|title}}</h1>
-  {% if departments %}
-    <h6><u>The following Departments are in your neighbour hood:</u></h6>
+  {% if departments %}    
     <div class="row">
     {% for dept in departments %}
       <div class="card">
