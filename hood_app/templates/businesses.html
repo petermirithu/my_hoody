@@ -7,6 +7,7 @@
   <h1 class="text-center">{{title|title}}</h1>
   {% if businesses %}    
     <div class="row">
+      <div class="card-columns">
       {% for bizna in businesses %}
       <div class="card">
         <div class="card-header">
@@ -23,6 +24,7 @@
         </div>        
       </div>
     {% endfor %}
+    </div>
   {% else %}
     <h6>No Businesses for this hood</h6> <h4><i class="fas fa-sad-tear"></i><h4>
   {% endif %}
