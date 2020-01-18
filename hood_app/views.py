@@ -26,8 +26,11 @@ def user_profile(request):
   view function that renders the profile
   '''
   title=request.user.username
-  context={
-    'title':title
+  posts=hoodposts.objects.filter(hood=request.user.profile.hood)
+
+  context={    
+    'title':title,
+    'posts':posts
   }
   return render(request,'profile.html',context)
 
@@ -38,9 +41,11 @@ def other_user_profile(request, user_name):
   '''
   title=request.user.username
   user_x=User.objects.get(username=user_name)
+  posts=hoodposts.objects.filter(hood=user_x.profile.hood)
   context={
     'title':title,
-    'user_x':user_x
+    'user_x':user_x,
+    'posts':posts,
   }
   return render(request,'others_profile.html',context)
 
@@ -112,8 +117,7 @@ def add_hoodpost(request):
       hoody=hood_form.save(commit=False)
       hoody.posted_by=request.user
       hoody.county=county_x
-      hoody.hood=hood_x
-      import pdb; pdb.set_trace()
+      hoody.hood=hood_x      
       hoody.save()
       return redirect('home')
   else:

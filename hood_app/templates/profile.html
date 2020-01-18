@@ -9,7 +9,7 @@
 
 {% block content %}
 <div class="container-fluid">
-  <h2 class="text-center">{{user.username|title}}'s profile</h2>
+  <h1 class="text-center">{{user.username|title}}'s profile</h1>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">  
@@ -55,9 +55,35 @@
       </div>
     </div>
     <div class="col-md-3">
-      <a href="{% url 'updateprofile' %}" class="btn btn-outline-info">Update profile</a>
+      <a href="{% url 'updateprofile' %}" class="btn btn-outline-info">Update profile</a>      
     </div>
   </div>
-  
+</div>
+<hr>
+<div class="container">
+  <h1 class="text-center">{{title|title}}'s Posts</h1>
+  <div class="row">
+    <div class="card-columns">
+    {% if posts %}
+      {% for post in posts %}
+      <div class="card">
+          <div class="card-header">
+            <h3>{{post.title}}</h3>          
+          </div>
+          <div class="card-body">
+            {% if post.post_image %}
+            <img src="{{post.post_image}}" width="250px" height="200px"alt='logo'>
+            {% endif %}
+            <h6>Description: {{post.description}}</h6>                
+            <h6>County: {{post.county}}</h6>
+            <div>Contact: <small>{{post.contact}}</small></div>        
+          </div>        
+        </div>
+      {% endfor %}
+    {% else %}
+    <h6>No Posts posted by {{title|title}}.</h6> <h4><i class="fas fa-sad-tear"></i><h4>
+    {% endif %}
+    </div>
+  </div>
 </div>
 {% endblock content %}
