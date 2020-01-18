@@ -27,7 +27,7 @@ To view the site Click [My_Hood_app]()
 
   Displays sign up page                         ~When the sign up is clicked.
 
-  Signs up with google                          ~When thhe sign up with google button is clicked.
+  Signs up with google                          ~When the sign up with google button is clicked.
 
   Displays profile page                         ~When one logs in automatically and when profile button is clicked.
 
