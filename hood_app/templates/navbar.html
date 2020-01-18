@@ -9,7 +9,11 @@
   </button>
   
   <a style="color:lightblue" class="navbar-brand" href="{% url 'home' %}">My_hoody</a>
-  
+
+  <form id="searchform" class="form-inline" role='search' action="{% url 'search' %}">
+    <input type="text" class="form-control" placeholder="Search business by hood" name="search_term">
+    <button style="background-color:lightblue" type="submit"><i class="fab fa-searchengin"></i></button>            
+  </form>    
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">  
     <ul class="navbar-nav ml-auto">

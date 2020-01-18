@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="container">
+  {% if businesses %}
+    <p class="alert-success">Found {{businesses|length}} stuff related to {{message}}</p>
+  {% else %}
+    <p class="alert-danger">Found 0 stuff related to {{message}}</p>
+  {% endif %}
+
+  {% if businesses %}
+  <h1 class="text-center">Available Businesses</h1>
+  {% endif %}
+  <div class="row">
+  {% for bizna in businesses %}
+    <div class="card">
+      <div class="card-header">
+        <div>{% if bizna.owner.profile.profile_pic %}<img src="{{bizna.owner.profile.profile_pic}}" class="rounded-circle" width="40px" height="40px" alt="profile_pic">{% endif %} {{bizna.owner}}</div>
+      </div>
+      <div class="card-body">
+        <h4>{{bizna.name}}</h4>
+        {% if bizna.bizna_pic %}
+        <img src="{{bizna.bizna_pic}}" width="250px" height="200px"alt='logo'>
+        {% endif %}
+        <h6>Description: {{bizna.description}}</h6>                
+        <h6>County: {{bizna.county}}</h6>
+        <div>Contact: <small>{{bizna.contact}}</small></div>        
+      </div>        
+    </div>
+  {% endfor %}        
+  </div>
+</div>
+{% endblock content %}

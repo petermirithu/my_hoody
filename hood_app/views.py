@@ -3,6 +3,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm,ProfileForm,BusinessForm,HoodpostForm
 from .models import *
+
 def home(request):
   '''
   view function that renders the home page
@@ -27,6 +28,19 @@ def user_profile(request):
     'title':title
   }
   return render(request,'profile.html',context)
+
+@login_required(login_url='/accounts/login/')
+def other_user_profile(request, user_name):
+  '''
+  view function that renders the profile for other users
+  '''
+  title=request.user.username
+  user_x=User.objects.get(username=user_name)
+  context={
+    'title':title,
+    'user_x':user_x
+  }
+  return render(request,'others_profile.html',context)
 
 @login_required(login_url='/accounts/login/')
 def update_profile(request):
@@ -150,12 +164,30 @@ def hood_details(request, hood_name):
   biznas=businesses.get_hood_businesess(hood_name)
   depts=departments.get_hood_departments(hood_name)
   posts=hoodposts.get_hood_posts (hood_name)
+  members=profile.get_hood_residents(hood_name)
   title=hood_name
   context={
     'title':title,
     'businesses':biznas,
     'departments':depts,
-    'posts':posts    
+    'posts':posts,
+    'members':members,
   }
   return render(request, 'hood_stuf.html',context)
 
+@login_required(login_url='/accounts/login/')  
+def search(request):
+  '''
+  view function that searches for businesess
+  '''
+  if 'search_term' in request.GET and request.GET['search_term']:
+    term=request.GET.get('search_term')
+    try:      
+      biznas=businesses.get_hood_businesess(term)
+      message=f'{term}'
+      title=term
+      return render(request,'search.html',{"message":message,"title":title,"businesses":biznas})
+
+    except businesses.DoesNotExist:
+      message=f'{term}'
+      return render(request,'search.html',{"message":message,"title":title})        

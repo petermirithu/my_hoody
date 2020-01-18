@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block styles %}
+  {{block.super}}
+  <link href="{% static 'css/profile.css' %}" rel="stylesheet">
+{% endblock styles %}
+
+{% block content %}
+<div class="container-fluid">
+  <h1 class="text-center">{{user_x.username|title}}'s profile</h1>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">  
+      <div class="card" id="card_profile">
+        <div class='row'>
+          <div class="col-md-6">
+            <div id="profile_pic">
+              {% if user.profile.profile_pic %}
+                <img src="{{user_x.profile.profile_pic}}" width="300px" height="300px" alt="{{user_x.username}}">
+                <h2 class="names">{{user_x.username}}</h2>
+              {% else %}
+                <img src="https://images.unsplash.com/photo-1532703108233-69111d554cb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" width="300px" height="300px" alt="Profile photo">
+                <h2 class="names">{{user_x.username}}</h2>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-md-6">
+            {% if user_x.profile.bio %}
+            <h5>Bio: {{user_x.profile.bio}}</h5>
+            {% else %}
+            <h5>Bio: ....</h5>
+            {% endif %}
+            <hr>
+            {% if user_x.profile.contact %}
+            <h5>Contact: {{user_x.profile.contact}}</h5>
+            {% else %}
+            <h5>Contact: ....</h5>
+            {% endif %}
+            <hr>
+            {% if user_x.profile.county %}
+            <h5>County: {{user_x.profile.county}}</h5>
+            {% else %}
+            <h5>County: ....</h5>
+            {% endif %}
+            <hr>
+            {% if user.profile.hood %}
+            <h5>Hood: {{user_x.profile.hood}}</h5>
+            {% else %}
+            <h5>Hood: ....</h5>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">          
+    </div>
+  </div>
+  
+</div>
+{% endblock content %}

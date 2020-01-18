@@ -6,6 +6,7 @@ urlpatterns = [
     url('^$',views.home,name="home"),
     url(r'logout/',views.logout_request,name="logout"),
     url(r'^accounts/profile/',views.user_profile,name="profile"), 
+    path('user/profile/<user_name>/',views.other_user_profile,name="othersprofile"), 
     url(r'^update/profile/',views.update_profile,name="updateprofile"),
     url(r'^add/business/$',views.add_business,name='add_business'),
     url(r'^add/hood/post/$',views.add_hoodpost,name='add_hoodpost'),
@@ -13,5 +14,6 @@ urlpatterns = [
     url(r'^departments/$',views.view_departments,name='departments'),
     url(r'^hood/posts/$',views.view_hood_posts,name='hoodposts'),
     path('hood/details/<hood_name>/',views.hood_details,name='hooddetails'),
+    url(r'^search/businesses/',views.search,name='search'),
 
 ]
