@@ -4,10 +4,10 @@
 
 {% block content %}
 <div class="container">
-  {% if businesses %}
-    <p class="alert-success">Found {{businesses|length}} stuff related to {{message}}</p>
+  {% if businesses %}  
+    <p class="alert alert-success alert-dismissible fade show" role="alert">Found {{businesses|length}} stuff related to {{message}}</p>
   {% else %}
-    <p class="alert-danger">Found 0 stuff related to {{message}}</p>
+    <p class="alert alert-warning alert-dismissible fade show" role="alert">Found 0 stuff related to {{message}}</p>
   {% endif %}
 
   {% if businesses %}
