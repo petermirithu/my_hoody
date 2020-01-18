@@ -1,10 +1,10 @@
-# [My_Hoody]()
+# [My_Hoody](https://myhood254.herokuapp.com/)
 
 This project was generated with [Django](https://www.djangoproject.com) version 2.2.8 <br>
 
 ![picture](my_hoody.png)
 
-To view the site Click [My_Hood_app]()
+To view the site Click [My_Hood_app](https://myhood254.herokuapp.com/)
 
 ## Author: 
   * [Peter Mirithu](https://github.com/petermirithu/my_hoody)
