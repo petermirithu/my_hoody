@@ -134,6 +134,11 @@ class businesses(models.Model):
     '''
     biznas=cls.objects.filter(hood__icontains=hood)
     return biznas
+
+  @classmethod
+  def get_all_businesses(cls):
+    all_bizs=cls.objects.all()
+    return all_bizs
     
 class departments(models.Model):
   '''
@@ -156,7 +161,12 @@ class departments(models.Model):
     '''
     depts=cls.objects.filter(hood__icontains=user_hood)
     return depts
-  
+
+  @classmethod
+  def get_all_departments(cls):
+    all_results=cls.objects.all()
+    return all_results
+
 class hoodposts(models.Model):
   '''
   class that defines how posts data shall be stored
@@ -179,6 +189,11 @@ class hoodposts(models.Model):
     '''
     posts=cls.objects.filter(hood__icontains=user_hood)
     return posts
+
+  @classmethod
+  def get_all_posts(cls):
+    all_res=cls.objects.all()
+    return all_res
 
 
   
