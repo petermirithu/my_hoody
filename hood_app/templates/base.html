@@ -14,14 +14,16 @@
   {% block styles %}
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">             
+    <link href="https://fonts.googleapis.com/css?family=Amarante&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gravitas+One&display=swap" rel="stylesheet">
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
   {% endblock styles %}
   </head>
   <body>
   {% include 'navbar.html' %}
-  {% comment %} <div id="wrapper-load">
+  <div id="wrapper-load">
     <span><img src="https://i.pinimg.com/originals/bf/34/61/bf34611d89cb4e9e62fc4997a1d329f2.gif" id="loader"></span>
-  </div>   {% endcomment %}
+  </div> 
   
   {% block content %}
 
