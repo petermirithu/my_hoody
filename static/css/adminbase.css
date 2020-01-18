@@ -1,0 +1,11 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  z-index: 999;    
+  bottom: 0;
+  top: 280px;
+  border: 2px solid black;    
+}
+.content{
+  margin-left: 250px;
+}

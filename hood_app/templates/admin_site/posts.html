@@ -1,0 +1,26 @@
+{% extends 'admin_site/base.html' %}
+
+{% block content %}
+  <h1>Welcome to Admin Site.</h1>  
+  <h3><u>Posts</u></h2>
+  <table class="table">
+    <tr>
+      <th scope="col">Title</th>      
+      <th scope="col">Description</th>   
+      <th scope="col">Posted By</th>       
+      <th scope="col">Posted On</th>   
+      <th scope="col">County</th>       
+      <th scope="col">Hood</th>             
+    </tr>
+    {% for post in posts  %}
+    <tr>
+      <td>{{post.title}}</td>
+      <td>{{post.description|truncatechars:15}}</td>
+      <td>{{post.posted_by}}</td>
+      <td>{{post.posted_on}}</td>      
+      <td>{{post.county}}</td>
+      <td>{{post.hood}}</td>
+    </tr>
+    {% endfor %}    
+  </table>
+{% endblock content %}

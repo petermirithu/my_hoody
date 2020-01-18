@@ -1,0 +1,26 @@
+{% extends 'admin_site/base.html' %}
+
+{% block content %}
+  <h1>Welcome to Admin Site.</h1>  
+  <h3><u>Businesses</u></h2>
+  <table class="table">
+    <tr>
+      <th scope="col">Business Name</th>      
+      <th scope="col">Description</th>   
+      <th scope="col">Owner</th>       
+      <th scope="col">Contact</th>   
+      <th scope="col">County</th>       
+      <th scope="col">Hood</th>             
+    </tr>
+    {% for bizna in biznas  %}
+    <tr>
+      <td>{{bizna.name}}</td>
+      <td>{{bizna.description|truncatechars:15}}</td>
+      <td>{{bizna.owner}}</td>
+      <td>{{bizna.contact}}</td>
+      <td>{{bizna.county}}</td>
+      <td>{{bizna.hood}}</td>
+    </tr>
+    {% endfor %}    
+  </table>
+{% endblock content %}

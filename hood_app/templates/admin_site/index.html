@@ -1,0 +1,45 @@
+{% extends 'admin_site/base.html' %}
+
+{% block content %}
+  <h1>Welcome to Admin Site.</h1>
+  <h3><u>Users</u></h2>
+  {% if messages %}
+  <div>
+      <ul>
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong >{{message}}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+      </div>
+      {% endfor %}        
+      </ul>
+  </div>
+  {% endif %}
+  <table class="table">
+    <tr>
+      <th scope="col">Username</th>      
+      <th scope="col">Email</th>   
+      <th scope="col">County</th>   
+      <th scope="col">Hood</th>   
+      <th scope="col">Status</th>       
+          
+    </tr>
+    {% for user_x in users  %}
+    <tr>
+      <td>{{user_x.username}}</td>
+      <td>{{user_x.email}}</td>
+      <td>{{user_x.profile.county}}</td>
+      <td>{{user_x.profile.hood}}</td>
+      <td>
+      {% if user.is_active %}
+        Activated <a style="color:red;border-radius:0px 5px 0px 5px;background-color:black;padding:5px" href="/deactivate/user/{{user_x.id}}/">Deactivate</a>
+      {% else %}
+        Deactivated <a style="color:black;border-radius:0px 5px 0px 5px;background-color:green;padding:5px" href="/activate/user/{{user_x.id}}/">Activate</a>
+      {% endif %}
+      </td>
+    </tr>
+    {% endfor %}    
+  </table>
+{% endblock content %}

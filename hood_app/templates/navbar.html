@@ -16,43 +16,53 @@
   </form>    
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">  
+
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <a style="color:azure" class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
       </li>     
 
+      <li class="nav-item active">
+        <a style="color:azure" class="nav-link" href="{% url 'dashboard' %}"><i class="fas fa-dashboard"></i>Admin</a>
+      </li>     
+
+      &nbsp;&nbsp;
       <div class="dropdown">
-        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="dropdown-toggle nav-link" style="background-color:lightblue;color:black" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           My hood
-        </button>
+        </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">          
-            <a class="dropdown-item" href="{% url 'businesses' %}"><i class="fas fab fa-bitcoin"></i>Businesses</a>            
-            <a class="dropdown-item" href="{% url 'departments' %}"><i class="fas fab fa-bitcoin"></i>Departments</a>            
-            <a class="dropdown-item" href="{% url 'hoodposts' %}"><i class="fas fab fa-bitcoin"></i>Hood Posts</a>            
+            <a class="dropdown-item" href="{% url 'businesses' %}"><i class="fas fa-business-time"></i>Businesses</a>            
+            <a class="dropdown-item" href="{% url 'departments' %}"><i class="fas fa-building"></i>Departments</a>            
+            <a class="dropdown-item" href="{% url 'hoodposts' %}"><i class="fab fa-usps"></i>Hood Posts</a>            
         </div>
       </div>      
+      &nbsp;&nbsp;
       <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="dropdown-toggle nav-link" style="background-color:lightblue;color:black" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Post
-        </button>
+        </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">          
             <a class="dropdown-item" href="{% url 'add_business' %}"><i class="fas fa-shopping-cart"></i>Add business</a>                    
             <a class="dropdown-item" href="{% url 'add_hoodpost' %}"><i class="fas fa-shopping-cart"></i>Add Hood Post</a>          
         </div>
       </div>
-
-      {% if user.is_authenticated %}
-        {% if user.profile.profile_pic %}
-        <img class="rounded-circle"src="{{user.profile.profile_pic.cdn_url}}" width="40px" height="40px"alt="Profile photo">                              
-        {% else %}
-        <img class="rounded-circle"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLLiVPh45RkmE-FnMz_mZBOwcrK2BemrMoJ5I5SRSa5zHuMy3L&s" width="40px" height="40px" alt="Profile photo">
-        {% endif %}
-      <li class="nav-item">
-        <a style="color:azure" class="nav-link" href="/accounts/profile/">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a style="color:azure" class="nav-link" href="/logout/"><i class="fas fa-sign-in-alt"></i> Sign Out</a>
-      </li>
+      &nbsp;&nbsp;      
+      {% if user.is_authenticated %}        
+      <div class="dropdown">
+        <a class="dropdown-toggle" type="button" style="background-color:lightblue" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% if user.profile.profile_pic %}
+          <img class="rounded-circle"src="{{user.profile.profile_pic.cdn_url}}" width="40px" height="40px"alt="Profile photo">                              
+          {% else %}
+          <img class="rounded-circle"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLLiVPh45RkmE-FnMz_mZBOwcrK2BemrMoJ5I5SRSa5zHuMy3L&s" width="40px" height="40px" alt="Profile photo">
+          {% endif %}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">                            
+          <a  class="nav-link" href="/accounts/profile/"><i class="fas fa-user"></i>Profile</a>      
+          <a  class="nav-link" href="/logout/"><i class="fas fa-sign-in-alt"></i>Sign Out</a>
+        </div>
+      </div>         
+      &nbsp;&nbsp;&nbsp;&nbsp;   
       {% else %}
       <li class="nav-item">
         <a style="color:azure" class="nav-link" href="/accounts/login/"><i class="fas fa-sign-in-alt"></i> Sign In</a>

@@ -1,0 +1,47 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  {% if title %}
+  <title>{{title}}</title>
+  {% else %}
+  <title>My_Hoody</title>
+  {% endif %}
+
+  {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css">             
+    <link href="{% static 'css/adminbase.css' %}" rel="stylesheet">
+  {% endblock styles %}
+  </head>
+  <body>
+  {% include 'navbar.html' %}    
+  {% include 'admin_site/side_navbar.html' %} 
+
+  <div class="content">
+    {% block content %}
+
+    {% endblock content %}
+    <hr>
+    <div class="footer jumbotron">
+      <h4><i class="fas fa-grin-tongue-wink"></i></h4>
+      <h5><b>Thank you for visiting Grant_py. Connect with us via:</b></h5>
+      <a><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/?hl=en">@grant_py</a></a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a><i class="fab fa-twitter-square"></i> <a href="https://twitter.com/login?lang=en">@ grant_py</a></a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/">@ grant_py</a></a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a><i class="fas fa-phone-square-alt"></i> 0790476167</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a><i class="fas fa-envelope"></i> <a href="mailto: pyra_m.k@yahoo.com">pyra_m.k@yahoo.com</a></a>
+    </div>
+    </body>
+    
+    {% block scripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8"></script>
+      <script src="https://kit.fontawesome.com/8311960bd4.js" crossorigin="anonymous"></script>    
+      {% bootstrap_javascript %}    
+    {% endblock scripts %}
+  </div>
+</html>

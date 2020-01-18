@@ -3,6 +3,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm,ProfileForm,BusinessForm,HoodpostForm
 from .models import *
+from django.contrib import messages
+from django.contrib.auth.decorators import permission_required
 
 def home(request):
   '''
@@ -191,3 +193,64 @@ def search(request):
     except businesses.DoesNotExist:
       message=f'{term}'
       return render(request,'search.html',{"message":message,"title":title})        
+
+@login_required()
+def admin_site(request):
+  '''
+  view function to render admin dash board
+  '''
+  users=User.objects.all()
+  title=admin_site
+  context={
+    'users':users,
+    'title':title,
+  }
+  return render(request, 'admin_site/index.html',context)
+
+@permission_required("True", "dashboard")
+def activate_user(request,user_id):
+  '''
+  view function that activates a user
+  '''
+  user=User.objects.get(id=user_id)
+  user.is_active = True
+  user.save()
+  messages.info(request, f"{user.username}'s account has been successfully activated!")
+  return redirect('dashboard')
+
+@permission_required("True", "dashboard")
+def deactivate_user(request,user_id):
+  '''
+  view function that deactivates a user
+  '''
+  user=User.objects.get(id=user_id)
+  user.is_active = False
+  user.save()
+  messages.info(request, f"{user.username}'s account has been successfully deactivated!")
+  return redirect('dashboard')
+
+@login_required()
+def all_businesess(request):
+  '''
+  view function that views all businesses
+  '''
+  biznas=businesses.get_all_businesses()    
+  
+  return render(request, 'admin_site/businesses.html',{"biznas":biznas})
+
+@login_required()
+def all_departments(request):
+  '''
+  view function that views all departments
+  '''
+  depts=departments.get_all_departments()     
+  return render(request, 'admin_site/departments.html',{"depts":depts})
+
+@login_required()
+def all_posts(request):
+  '''
+  view function that views all posts
+  '''
+  posts=hoodposts.get_all_posts()
+
+  return render(request, 'admin_site/posts.html',{"posts":posts})

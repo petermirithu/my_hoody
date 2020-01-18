@@ -1,0 +1,28 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'dashboard' %}"><i class="fas fa-users"></i>                   
+                    Users<span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'business_adm' %}"><i class="fas fa-business-time"></i>                   
+                    Businesses
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'depts_adm' %}"><i class="fas fa-building"></i>                   
+                    Departments
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'posts_adm' %}"><i class="fab fa-usps"></i>                   
+                    Posts
+                </a>
+            </li>
+        </ul>                
+    </div>
+</nav>
+
+    
