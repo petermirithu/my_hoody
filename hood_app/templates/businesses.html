@@ -11,7 +11,7 @@
       {% for bizna in businesses %}
       <div class="card">
         <div class="card-header">
-          <div>{% if bizna.owner.profile.profile_pic %}<img src="{{bizna.owner.profile.profile_pic}}" class="rounded-circle" width="40px" height="40px" alt="profile_pic">{% endif %} {{bizna.owner}}</div>
+          <div>{% if bizna.owner.profile.profile_pic %} <a href="/user/profile/{{bizna.owner}}/"><img src="{{bizna.owner.profile.profile_pic}}" class="rounded-circle" width="40px" height="40px" alt="profile_pic">{% endif %} {{bizna.owner}}</a></div>
         </div>
         <div class="card-body">
           <h4>{{bizna.name}}</h4>
