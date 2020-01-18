@@ -43,9 +43,7 @@ class hoodscounty(models.Model):
     found.save()
     return found
 
-
-
-  
+ 
 class profile(models.Model):
   '''
   class that defines how a user's profile data shall be saved
