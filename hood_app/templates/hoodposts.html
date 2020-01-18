@@ -5,13 +5,12 @@
 {% block content %}
 <div class="container">  
   <h1 class="text-center">{{title|title}}</h1>
-  {% if posts %}
-    <h6><u>The following posts are in your neighbour hood only:</u></h6>
+  {% if posts %}    
     <div class="row">
       {% for post in posts %}
       <div class="card">
         <div class="card-header">
-          <div>{% if post.posted_by.profile.profile_pic %}<img src="{{post.posted_by.profile.profile_pic}}" class="rounded-circle" width="40px" height="40px" alt="profile_pic">{% endif %} {{post.posted_by}}</div>
+          <div>{% if post.posted_by.profile.profile_pic %}<a href="/user/profile/{{post.posted_by}}/"><img src="{{post.posted_by.profile.profile_pic}}" class="rounded-circle" width="40px" height="40px" alt="profile_pic">{% endif %} {{post.posted_by}}</a></div>
         </div>
         <div class="card-body">
           <h3>{{post.title}}</h3>

@@ -5,13 +5,19 @@
 {% block content %}
 <div class="container">    
   <h1 class="text-center">{{title}} hood Details.</h1>
-  <h2><u>Businesses</u></h2>    
+  <div>
+    <span style="color:green">Members: {{members.count}}</span>&nbsp;&nbsp;&nbsp;&nbsp;    
+    <span style="color:blue">Businesses: {{businesses.count}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span style="color:black">Departments: {{departments.count}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <span style="color:red">Hood Posts: {{posts.count}}</span>
+  </div>
+  <hr>
   <div class="row">             
     {% if businesses %}        
       {% for bizna in businesses %}
         <div class="card">
         <div class="card-header">
-          <div>{% if bizna.owner.profile.profile_pic %}<img src="{{bizna.owner.profile.profile_pic}}" class="rounded-circle" width="40px" height="40px" alt="profile_pic">{% endif %} {{bizna.owner}}</div>
+          <div>{% if bizna.owner.profile.profile_pic %}<a href="/user/profile/{{bizna.owner}}/"><img src="{{bizna.owner.profile.profile_pic}}" class="rounded-circle" width="40px" height="40px" alt="profile_pic">{% endif %} {{bizna.owner}}</a></div>
         </div>
         <div class="card-body">
           <h4>{{bizna.name}}</h4>
@@ -56,7 +62,7 @@
       {% for post in posts %}
       <div class="card">
         <div class="card-header">
-          <div>{% if post.posted_by.profile.profile_pic %}<img src="{{post.posted_by.profile.profile_pic}}" class="rounded-circle" width="40px" height="40px" alt="profile_pic">{% endif %} {{post.posted_by}}</div>
+          <div>{% if post.posted_by.profile.profile_pic %}<a href="/user/profile/{{post.posted_by}}/"><img src="{{post.posted_by.profile.profile_pic}}" class="rounded-circle" width="40px" height="40px" alt="profile_pic">{% endif %} {{post.posted_by}}</a></div>
         </div>
         <div class="card-body">
           <h3>{{post.title}}</h3>

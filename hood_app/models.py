@@ -11,6 +11,40 @@ class hoodscounty(models.Model):
 
   def __str__(self):
       return self.county
+
+  def create_hood(self):
+    '''
+    function to save new instace of hood county class
+    '''    
+    self.save()
+
+  def delete_hood(self):
+    '''
+    function that deletes a hood name from the database
+    '''
+    self.delete()
+
+  @classmethod
+  def find_hood(cls,hood_id):
+    '''
+    function that finds a hood by id
+    '''
+    found=cls.objects.get(id=hood_id)
+    return found
+
+  @classmethod
+  def update_hood(cls,hood_id,county_x,hood_x):
+    '''
+    function that updates a hood
+    '''
+    found=cls.objects.get(id=hood_id)
+    found.county=county_x
+    found.hood=hood_x
+    found.save()
+    return found
+
+
+
   
 class profile(models.Model):
   '''
@@ -25,9 +59,15 @@ class profile(models.Model):
   
   def __str__(self):
       return self.user
+
+  @classmethod
+  def get_hood_residents(cls,hood):
+    '''
+    function that queries the database for user's living in a certain hood
+    '''
+    members=cls.objects.filter(hood__icontains=hood)
+    return members
   
-
-
 class businesses(models.Model): 
   '''
   class that defines how businesses shall be stored in the app
@@ -43,6 +83,42 @@ class businesses(models.Model):
   def __str__(self):
       return self.name
 
+  def create_business(self):
+    '''
+    function that saves new instance of business class
+    '''
+    self.save()
+
+  def delete_business(self):
+    '''
+    function that deletes a business
+    '''
+    self.delete()
+
+  @classmethod
+  def find_business(cls,biz_id):
+    '''
+    function that queries a database for a business with a specific id
+    '''
+    found=cls.objects.get(id=biz_id)
+    return found
+
+  @classmethod
+  def update_business(cls,biz_id,name,description,bizna_pic,contact,owner,county,hood):
+    '''
+    function that updates  business with recent info
+    '''
+    found=cls.objects.get(id=biz_id)
+    found.name=name
+    found.description=description
+    found.bizna_pic=bizna_pic
+    found.contact=contact
+    found.owner=owner
+    found.county=county
+    found.hood=hood
+    found.save()
+    return found
+
   @classmethod
   def get_hood_businesess(cls,user_hood):
     '''
@@ -50,7 +126,20 @@ class businesses(models.Model):
     '''
     biznas=cls.objects.filter(hood__icontains=user_hood)
     return biznas
-  
+
+  @classmethod
+  def get_businesses(cls,hood):
+    '''
+    function that searches for a businesses by hood
+    '''
+    biznas=cls.objects.filter(hood__icontains=hood)
+    return biznas
+
+  @classmethod
+  def get_all_businesses(cls):
+    all_bizs=cls.objects.all()
+    return all_bizs
+    
 class departments(models.Model):
   '''
   class that defines how department's data shall be stored
@@ -72,7 +161,12 @@ class departments(models.Model):
     '''
     depts=cls.objects.filter(hood__icontains=user_hood)
     return depts
-  
+
+  @classmethod
+  def get_all_departments(cls):
+    all_results=cls.objects.all()
+    return all_results
+
 class hoodposts(models.Model):
   '''
   class that defines how posts data shall be stored
@@ -95,6 +189,11 @@ class hoodposts(models.Model):
     '''
     posts=cls.objects.filter(hood__icontains=user_hood)
     return posts
+
+  @classmethod
+  def get_all_posts(cls):
+    all_res=cls.objects.all()
+    return all_res
 
 
   

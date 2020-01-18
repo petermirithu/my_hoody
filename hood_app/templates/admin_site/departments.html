@@ -1,0 +1,24 @@
+{% extends 'admin_site/base.html' %}
+
+{% block content %}
+  <h1>Welcome to Admin Site.</h1>  
+  <h3><u>Departments</u></h2>
+  <table class="table">
+    <tr>
+      <th scope="col">Department Name</th>      
+      <th scope="col">Description</th>              
+      <th scope="col">Contact</th>   
+      <th scope="col">County</th>       
+      <th scope="col">Hood</th>             
+    </tr>    
+    {% for dept in depts  %}
+    <tr>
+      <td>{{dept.name}}</td>
+      <td>{{dept.description|truncatechars:15}}</td>      
+      <td>{{dept.contact}}</td>
+      <td>{{dept.county}}</td>
+      <td>{{dept.hood}}</td>
+    </tr>
+    {% endfor %}    
+  </table>
+{% endblock content %}
